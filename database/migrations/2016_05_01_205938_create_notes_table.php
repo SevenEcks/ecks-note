@@ -16,7 +16,7 @@ class CreateNotesTable extends Migration
             $table->increments('id');
             $table->string('subject', 100);
             $table->text('body');
-            $table->integer('user_id');
+            $table->integer('object_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +29,8 @@ class CreateNotesTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::drop('notes');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

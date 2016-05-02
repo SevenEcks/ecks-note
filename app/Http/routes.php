@@ -10,11 +10,9 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+//use App\Models\Note;
+use App\Models\Note;
 Route::get('/', function () {
-    return view('welcome');
+    dd(Note::find(1)->object());
 });
 
-Route::get('/fuck', function () {
-    return "ASDF";
-});
