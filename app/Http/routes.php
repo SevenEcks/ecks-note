@@ -12,7 +12,8 @@
 */
 //use App\Models\Note;
 use App\Models\Note;
-Route::get('/', function () {
-    dd(Note::find(1)->object());
+Route::get('/notes', function () {
+    return View('view-notes');
 });
-
+Route::get('/notes/new', 'NoteController@newNote');
+Route::post('/notes/create', 'NoteController@createNote');
